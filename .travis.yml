@@ -1,33 +1,35 @@
-sudo: "​required"
-services: "-​ ​docker"
+sudo: ​required
+services:
+  -​ ​docker 
 language: node_js
 node_js:
-- '4'
+  - "4"
 env:
-  matrix:
   - CXX=g++-4.8
-  global:
-  - secure: qa5CyUWPXtYRtlA2zFKDEMKDov5OQTfIyju8BstJ7yVqe1aqB7ITg+gMrs+Dg3li+ZYohBs6d/NVSIjeHvTPK8DdHTABn/74C2tRrJmx1Bv9YhVlgTAJB9mfL09L1qUqgue8FnjQa6spuaAcCQdEYDGnJ/s7Bvt+8J+QF2DCmZr9rt6uRVPg1p7jMRAIkQ/mSSUehzXND33aSFKlQfrtiwwuQUVUgC8WDA5hZvdZIvyS5cUxUXh6i2lvc9Dp4JZByTaJxUx5lnL1fwk86q7v0rDiwhbhAmWxd0Ft7oesFR5wazz6PbLbGWsqY6Px/6Tlj4nEcCZy7oD5Ql1V4d4nmwy/HlhsefykW1LyHWyREXYoACou4Mc1vA21scZUCShupGbaV6tQ/WTlxcta6/Z1rT5QOGg4dGvx/+K7mIwus+YQGPZeZOyoSnxdhAlg5TUhfB1W0kiv7yJbNc3o27pAClbcrRZMKMGSmRYHXY/e6fxVuK/+fUvemHgQm7MbzG1b7oPFpZLjhCr27LzuGrE23UczMrI6pNPYcQZgS98nn1jbFC320AEn9MhLOdzioO3NRTz2qFhvlLeJFcCMMBUR9PrA3XsXh3m/03GTmg0nL8N0L/ZJGjsTp3FmqLThe1uU0BNgdZys4f2lpHff9Sdneyb5xd/r52l4Q0W2ZYupm1o=
-  - secure: CjVcvrcoMFm11QGvQelaH4mZkehHX31Gi/HHCx/wWb4S1OTGCvfdlkzWhhl26wpd7XtrNBZZfr5/O1jECjSBj8NDhmRVfySmiM0oIUfDDKA6mGBqQuOJR9Zw/M5yanbRqc6dip5GobR5rTMPDkIFvipjY/CmQx0dHPONNmL/KJGMnyC7Q4ihCIMPj1627JdnGKou/yl4+eIWkrfl/E6bfo2YSGdp4nCFrUFPJa9wENS5jHpxgNKct5ZhNYghsXDF8KvdT2e7tK/RU95Uo1TP/iW2DWkCa8DIvMVLBXaX0GFBXJF7Og68S8Ezm1FX3v0uTx73PiBvifYKS9wt2vNxJpL3h3z9mLcnF3SudYULV3uposVAAiAyQKU8SNen1IsJJg/ORPGs9DpEQ6rwQltbneZUQ/rS75coO/kctjzy4IhtB12J5r8wrVtWufd7uaDPNEp9Tg/+q3itjkn/9Qll2cGvYEFkwfndCMdfs6nKjrW6lrPuOyKR+FNUwy/O0ooWJCq6xRZPU1KgeOvgvNUSF7xf9H1lxhtyrxir+nsYJ7E3SJ/szBoCdZELCrcaSuLV15PHUN130kCZfv25i7zDh0sXcIZA+u2x0IBvnah87BJ1wITynp4VuqZwcoohW/pe2BEfJ712m6snEtXYeXgyj1L3S2CVRR5ixeIMbyNbid4=
-  - secure: qD3sTtGmT4UJKFCltqr8zLYE+R44yvaZERUhLZyI831ElOvZvuY6VQq8wt2bUS5MAa7RdrtoQ7lIDR9IqwhLQyv5OM6dqjxCD7Ocb+JIUAXbO3drrBka7uoAxAlunw59U9xjCk0/nqn+D5PlwmfBhwagXdkIrM9KkxJNUSaZ2Y4UpxMiQSI7OBd90+DW2QDGYIJAaqznH0lJg0hoUbsCo2dPbG4m00P1eBnBjHPsMy/gSKwHO4NGaJoFQbGu0uzNjzyQtu1FLWqiRRa+2uq7pcc0PmVCXOmpBzROKv1glFeW4za4nJZDH0kmlogI8Nc3mDDKoS5O4q2ZE6tNxkX9/WAFrF45Ne96aMtG9muDB0LQYCqyftamQGFydNG6nUIcNlRKsIuha+Unu5uWNkclCB2v5c7WyKhrh+I0lqJoe/BwTcONQD+v4CW1mGcKO1qZMiCgbFjsBM/eikAWh4tRAHIaIZCss0zXBSN29IEIoFgDtRwl3492/x06ydYJ8PC+IleJ1nv1Y2AThnNO11cBVpOPr6D3fIcHDYDxc9nywbyJRK1kcJ3wUCV7WJSXmcJmJdeRYSIEN8bJRXoBK0HgUEI6eYn0kJ9KL4G6Y+y6bqEXFNFNRW8QlcwsIkCSBItnkyRvkB3lCT7CDE0z9W5Xs/1hwyhxa8cjoe05FF7d0sU=
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
-before_install: "-​ ​docker​ ​version -​ ​docker​ ​info"
-install: "-​ ​npm​ ​install​ -​ ​npm​ ​install​ ​newman"
-before_script: "-​ ​node​ ​--version - ​npm​ ​--version - ​node_modules/.bin/newman​
-  ​--version"
-script: "-​ ​nosetests -​ ​docker​ ​build​ ​-t​ ​pieterdonkers/testapp:1.0.0​ .​ -​
-  ​docker​ ​run​ ​--name​ ​example_api​ ​-d​ ​-t​ ​-p​ ​127.0.0.1​:8080:8080 pieterdonkers/testapp:1.0.0
-  -​ ​docker​ ​ps -​ ​count=0​ ​&&​ ​until​ ​$(curl​ ​--output​ ​/dev/null​ ​--silent​
-  ​--head​ ​--fail http://localhost:8080); ​do​ ​printf​ ​'.'​ ​&&​ ​sleep​ ​3​ ​&&​
-  ​count=$((count+1)) &&​ ​if​ ​[​ ​$count​ ​-gt​ ​5​ ​];​ ​then​ ​break;​ ​fi;​ ​done
-  -​ ​docker​ ​logs​ ​example_api -​ ​node_modules/.bin/newman​ ​run​ ​tests/postman_collection.json​
-  ​-e tests/postman_environment.json"
+      - g++-4.8
+before_install:
+  -​ ​docker​ ​version
+  -​ ​docker​ ​info
+install:
+  -​ ​npm​ ​install​
+  -​ ​npm​ ​install​ ​newman
+before_script:
+  -​ ​node​ ​--version
+  - ​npm​ ​--version
+  - ​node_modules/.bin/newman​ ​--version
+script:
+  -​ ​nosetests
+  - docker build -t pieterdonkers/devops_ass2 .
+  -​ ​docker​ ​run​ ​--name​ ​example_api​ ​-d​ ​-t​ ​-p​ ​127.0.0.1​:8080:8080 pieterdonkers/devops_ass2
+  -​ ​docker​ ​ps
+  -​ ​count=0​ ​&&​ ​until​ ​$(curl​ ​--output​ ​/dev/null​ ​--silent​ ​--head​ ​--fail http://localhost:8080); ​do​ ​printf​ ​'.'​ ​&&​ ​sleep​ ​3​ ​&&​ ​count=$((count+1)) &&​ ​if​ ​[​ ​$count​ ​-gt​ ​5​ ​];​ ​then​ ​break;​ ​fi;​ ​done
+  -​ ​docker​ ​logs​ ​example_api
+  -​ ​node_modules/.bin/newman​ ​run​ ​tests/postman_collection.json​ ​-e tests/postman_environment.json
 after_success:
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
-- docker tag pieterdonkers/testapp:1.0.0 pieterdonkers/testapp:1.0.0
-- docker push pieterdonkers/testapp:1.0.0
+  - docker tag pieterdonkers/devops_ass2 pieterdonkers/devops_ass2
+  - docker push pieterdonkers/devops_ass2
