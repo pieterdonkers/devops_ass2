@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.1",
+    "newman": "^4.3.1",
     "quick.db": "7.0.0-b21"
   }
 }
