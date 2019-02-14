@@ -1,0 +1,16 @@
+{
+  "name": "devopstest",
+  "version": "1.0.0",
+  "description": "test for devops",
+  "author": "",
+  "license": "ISC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.1",
+    "quick.db": "7.0.0-b21"
+  }
+}

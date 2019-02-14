@@ -1,0 +1,36 @@
+sudo: ​required
+services:
+  -​ ​docker 
+language: node_js
+node_js:
+  - "4"
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+before_install:
+  -​ ​docker​ ​version
+  -​ ​docker​ ​info
+install:
+  -​ ​npm​ ​install​
+  -​ ​npm​ ​install​ ​newman
+before_script:
+  -​ ​node​ ​--version
+  - ​npm​ ​--version
+  - ​node_modules/.bin/newman​ ​--version
+script:
+  - docker build -t pieterdonkers/testapp .
+  -​ ​docker​ ​run​ ​--name​ ​example_api​ ​-d​ ​-t​ ​-p​ ​127.0.0.1​:8080:8080 pieterdonkers/testapp
+  -​ ​docker​ ​ps
+  -​ ​count=0​ ​&&​ ​until​ ​$(curl​ ​--output​ ​/dev/null​ ​--silent​ ​--head​ ​--fail http://localhost:8080); ​do​ ​printf​ ​'.'​ ​&&​ ​sleep​ ​3​ ​&&​ ​count=$((count+1)) &&​ ​if​ ​[​ ​$count​ ​-gt​ ​5​ ​];​ ​then​ ​break;​ ​fi;​ ​done
+  -​ ​docker​ ​logs​ ​example_api
+  -​ ​node_modules/.bin/newman​ ​run​ ​tests/postman_collection.json​ ​-e tests/postman_environment.json
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker tag pieterdonkers/testapp
+pieterdonkers/testapp
+  - docker push pieterdonkers/testapp
