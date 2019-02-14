@@ -1,6 +1,6 @@
-sudo: ​required
+sudo: required
 services:
-  -​ ​docker 
+  - docker 
 language: node_js
 node_js:
   - "4"
@@ -13,23 +13,23 @@ addons:
     packages:
       - g++-4.8
 before_install:
-  -​ ​docker​ ​version
-  -​ ​docker​ ​info
+  - docker version
+  - docker info
 install:
-  -​ ​npm​ ​install​
-  -​ ​npm​ ​install​ ​newman
+  - npm install
+  - npm install newman
 before_script:
-  -​ ​node​ ​--version
-  - ​npm​ ​--version
-  - ​node_modules/.bin/newman​ ​--version
+  - node --version
+  - npm --version
+  - node_modules/.bin/newman --version
 script:
-  -​ ​nosetests
+  - nosetests
   - docker build -t pieterdonkers/devops_ass2 .
-  -​ ​docker​ ​run​ ​--name​ ​example_api​ ​-d​ ​-t​ ​-p​ ​127.0.0.1​:8080:8080 pieterdonkers/devops_ass2
-  -​ ​docker​ ​ps
-  -​ ​count=0​ ​&&​ ​until​ ​$(curl​ ​--output​ ​/dev/null​ ​--silent​ ​--head​ ​--fail http://localhost:8080); ​do​ ​printf​ ​'.'​ ​&&​ ​sleep​ ​3​ ​&&​ ​count=$((count+1)) &&​ ​if​ ​[​ ​$count​ ​-gt​ ​5​ ​];​ ​then​ ​break;​ ​fi;​ ​done
-  -​ ​docker​ ​logs​ ​example_api
-  -​ ​node_modules/.bin/newman​ ​run​ ​tests/postman_collection.json​ ​-e tests/postman_environment.json
+  - docker run --name example_api -d -t -p 127.0.0.1:8080:8080 pieterdonkers/devops_ass2
+  - docker ps
+  - count=0 && until $(curl --output /dev/null --silent --head --fail http://localhost:8080); do printf '.' && sleep 3 && count=$((count+1)) && if [ $count -gt 5 ]; then break; fi; done
+  - docker logs example_api
+  - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 after_success:
   - docker tag pieterdonkers/devops_ass2 pieterdonkers/devops_ass2
   - docker push pieterdonkers/devops_ass2
